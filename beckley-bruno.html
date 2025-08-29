@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Launching Visualizer…</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    html,body{height:100%;margin:0;font-family:Roboto,Arial,sans-serif;display:grid;place-items:center;background:#fafafa}
+    .box{background:#fff;border:1px solid #eee;border-radius:14px;padding:20px 24px;box-shadow:0 2px 10px rgba(0,0,0,.05);text-align:center}
+    a{color:#4B2E2E;font-weight:700;text-decoration:none;border-bottom:2px solid #4B2E2E}
+  </style>
+
+  <!-- IMPORTANT: add the autolaunch params BEFORE scripts load -->
+  <script>
+    (function () {
+      var u = new URL(window.location.href);
+      var changed = false;
+      if (!u.searchParams.has('roomvoStartVisualizer')) { u.searchParams.set('roomvoStartVisualizer', '1'); changed = true; }
+      if (!u.searchParams.has('product_type'))        { u.searchParams.set('product_type', 'floor'); changed = true; }
+      if (!u.searchParams.has('sku'))                 { u.searchParams.set('sku', 'VTRBECBRU7X48-4.4MM-12MIL'); changed = true; }
+      // Not strictly required, but helps match MSI’s vendor configuration:
+      if (!u.searchParams.has('vendor_slug'))         { u.searchParams.set('vendor_slug', 'msi'); changed = true; }
+      if (changed) { window.location.replace(u.toString()); }
+    })();
+  </script>
+</head>
+<body>
+  <div class="box">
+    <div>Launching the Roomvo visualizer…</div>
+    <div style="margin-top:10px">
+      <!-- Fallback in case something blocks scripts -->
+      <a href="?roomvoStartVisualizer=1&product_type=floor&sku=VTRBECBRU7X48-4.4MM-12MIL&vendor_slug=msi">Click here if you are not redirected</a>
+    </div>
+  </div>
+
+  <!-- Load Roomvo scripts in order; no async -->
+  <script src="https://www.roomvo.com/static/scripts/b2b/common/assistant.js"></script>
+  <script src="https://www.roomvo.com/static/scripts/b2b/msi.js"></script>
+</body>
+</html>
